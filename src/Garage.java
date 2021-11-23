@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Garage extends ArrayList<Vehicle> {
 
 	public Garage() {
-		Vehicle x5 = new Vehicle("CAR", 220, "BMW");
-		Vehicle x6 = new Vehicle("CAR", 260, "BMW");
-		Vehicle titanic = new Vehicle("SHIP", 70, "Titanic inc.");
-		Vehicle quickBoat = new Vehicle("SHIP", 100, "QuickBoat inc.");
-		Vehicle airForce1 = new Vehicle("PLANE", 350, "America inc.");
-		Vehicle airForce5 = new Vehicle("PLANE", 420, "America inc.");
-		Vehicle bmx = new Vehicle("BICYCLE", 30, "Tony Hawk inc.");
-		Vehicle rider = new Vehicle("BICYCLE", 50, "Tony Hawk inc.");
+		Vehicle x5 = new Vehicle(TypeOfVehicle.CAR, 220, "BMW");
+		Vehicle x6 = new Vehicle(TypeOfVehicle.CAR, 260, "BMW");
+		Vehicle titanic = new Vehicle(TypeOfVehicle.SHIP, 70, "Titanic inc.");
+		Vehicle quickBoat = new Vehicle(TypeOfVehicle.SHIP, 100, "QuickBoat inc.");
+		Vehicle airForce1 = new Vehicle(TypeOfVehicle.PLANE, 350, "America inc.");
+		Vehicle airForce5 = new Vehicle(TypeOfVehicle.PLANE, 420, "America inc.");
+		Vehicle bmx = new Vehicle(TypeOfVehicle.BICYCLE, 30, "Tony Hawk inc.");
+		Vehicle rider = new Vehicle(TypeOfVehicle.BICYCLE, 50, "Tony Hawk inc.");
 
 		this.add(x5);
 		this.add(x6);
@@ -22,16 +22,16 @@ public class Garage extends ArrayList<Vehicle> {
 		this.add(rider);
 	}
 
-	public void fastestVehicle(String typeOfVehicle) {
-		String type = null;
+	public void fastestVehicle(TypeOfVehicle typeName) {
+		TypeOfVehicle type = null;
 		String producer = null;
 		int maxSpeed = 0;
 
 		for (Vehicle v: this) {
-			if (v.getType().equals(typeOfVehicle) || typeOfVehicle.equals("ALL")) {
+			if (v.getTypeName().equals(typeName) || typeName.equals(TypeOfVehicle.ALL)) {
 				if (v.getMaxSpeed() > maxSpeed) {
 					maxSpeed = v.getMaxSpeed();
-					type = v.getType();
+					type = v.getTypeName();
 					producer = v.getProducer();
 				}
 			}

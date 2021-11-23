@@ -1,17 +1,17 @@
 public class Vehicle {
 
-	private final String type;
+	private final TypeOfVehicle typeName;
 	private final String producer;
 	private final int maxSpeed;
 
-	public Vehicle(String type, int maxSpeed, String producer) {
-		this.type = type;
+	public Vehicle(TypeOfVehicle typeName, int maxSpeed, String producer) {
+		this.typeName = typeName;
 		this.maxSpeed = maxSpeed;
 		this.producer = producer;
 	}
 
-	public String getType() {
-		return type;
+	public TypeOfVehicle getTypeName() {
+		return typeName;
 	}
 
 	public String getProducer() {

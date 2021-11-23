@@ -1,8 +1,8 @@
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
@@ -22,38 +22,38 @@ public class Menu {
 		showMenu();
 	}
 	private void showMenu() {
-		System.out.println("1.CAR\n2.SHIP\n3.PLANE\n4.BICYCLE\n5.ALL\n0.EXIT");
-		int option = 0;
+		System.out.println("CAR\nSHIP\nPLANE\nBICYCLE\nALL\nEXIT");
+		TypeOfVehicle option = null;
 		Scanner sc = new Scanner(System.in);
 		try {
-			option = sc.nextInt();
+			option = TypeOfVehicle.valueOf(sc.nextLine());
 		} catch (InputMismatchException e) {
 			System.out.println("Podaj prawidłową opcję");
 			promptEnterKey();
 			showMenu();
 		}
-		switch(option){
-			case 1:
+		switch(Objects.requireNonNull(option)){
+			case CAR:
 				logger.info("Wybrana opcja : {}", car);
-				g.fastestVehicle("CAR");
+				g.fastestVehicle(TypeOfVehicle.CAR);
 				break;
-			case 2:
+			case SHIP:
 				logger.info("Wybrana opcja : {}", ship);
-				g.fastestVehicle("SHIP");
+				g.fastestVehicle(TypeOfVehicle.SHIP);
 				break;
-			case 3:
+			case PLANE:
 				logger.info("Wybrana opcja : {}", plane);
-				g.fastestVehicle("PLANE");
+				g.fastestVehicle(TypeOfVehicle.PLANE);
 				break;
-			case 4:
+			case BICYCLE:
 				logger.info("Wybrana opcja : {}", bicycle);
-				g.fastestVehicle("BICYCLE");
+				g.fastestVehicle(TypeOfVehicle.BICYCLE);
 				break;
-			case 5:
+			case ALL:
 				logger.info("Wybrana opcja : {}", all);
-				g.fastestVehicle("ALL");
+				g.fastestVehicle(TypeOfVehicle.ALL);
 				break;
-			case 0:
+			case EXIT:
 				logger.info("Wybrana opcja : {}", exit);
 				System.exit(0);
 				break;
