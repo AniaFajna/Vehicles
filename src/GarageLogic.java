@@ -1,8 +1,16 @@
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 
-public class Garage extends ArrayList<Vehicle> {
+public class GarageLogic extends ArrayList<Vehicle> {
 
-	public Garage() {
+	private static final Logger logger = Logger.getLogger(GarageLogic.class);
+	private TypeOfVehicle type;
+	private String producer;
+	private int maxSpeed;
+
+	public GarageLogic() {
+		logger.info("Garage initialization.");
 		Vehicle x5 = new Vehicle(TypeOfVehicle.CAR, 220, "BMW");
 		Vehicle x6 = new Vehicle(TypeOfVehicle.CAR, 260, "BMW");
 		Vehicle titanic = new Vehicle(TypeOfVehicle.SHIP, 70, "Titanic inc.");
@@ -23,20 +31,24 @@ public class Garage extends ArrayList<Vehicle> {
 	}
 
 	public void fastestVehicle(TypeOfVehicle typeName) {
-		TypeOfVehicle type = null;
-		String producer = null;
-		int maxSpeed = 0;
+		type = null;
+		producer = null;
+		maxSpeed = 0;
 
 		for (Vehicle v: this) {
 			if (v.getTypeName().equals(typeName) || typeName.equals(TypeOfVehicle.ALL)) {
 				if (v.getMaxSpeed() > maxSpeed) {
-					maxSpeed = v.getMaxSpeed();
 					type = v.getTypeName();
 					producer = v.getProducer();
+					maxSpeed = v.getMaxSpeed();
 				}
 			}
 		}
-		System.out.format("Pojazd %s producenta %s jest najszybszy (maksymalna prędkość to = %d km/h)\n",
-				type, producer, maxSpeed);
 	}
+
+	public TypeOfVehicle getType() { return type;	}
+
+	public String getProducer() { return producer;	}
+
+	public int getMaxSpeed() { return maxSpeed;	}
 }
